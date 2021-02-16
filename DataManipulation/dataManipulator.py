@@ -3,13 +3,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 import pickle
+import time
 import random
+from sklearn import svm
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn import metrics
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import svm
+from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import RandomForestClassifier
 dir = '../Database/training'
 
 categories = ['Borer', 'Choanephora']
 
 data = []
-
+# plt.imshow(dis_img)
+# plt.show()
 for category in categories:
     path = os.path.join(dir,category)
     label = categories.index(category)
@@ -17,7 +29,9 @@ for category in categories:
         imgpath = os.path.join(path,img)
         try:
             dis_img = cv2.imread(imgpath)
-            dis_img = cv2.resize(dis_img, (50,50))
+            dis_img = cv2.resize(dis_img, (250,250))
+            # plt.imshow(dis_img)
+            # plt.show()
             image = np.array(dis_img).flatten()
             data.append([image,label])
         except:
@@ -26,16 +40,3 @@ for category in categories:
 pick_out = open('../Database/pickle/dataset.pickle','wb')
 pickle.dump(data,pick_out)
 pick_out.close()
-
-pick_in  = open('../Database/pickle/dataset.pickle','rb')
-loadData = pickle.load(pick_in)
-pick_in.close()
-random.shuffle(loadData)
-features = []
-labels = []
-
-for feature, label in data:
-    features.append(feature)
-    labels.append(label)
-
-
