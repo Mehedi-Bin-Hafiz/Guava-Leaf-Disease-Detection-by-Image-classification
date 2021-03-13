@@ -28,14 +28,12 @@ for feature, label in data:
     y.append(label)
 
 #datauserate
-
+print(len(x))
 thirtypercent=0.30  # training size 70%
 fourtypercent=0.40   # training size 60%
 fiftypercent=0.50    # training size 50%
 sixtypercent=0.60    # training size 40%
 seventypercent=0.70   # training size 30%
-
-
 
 
 print("########## KNN algorithm ###########")
