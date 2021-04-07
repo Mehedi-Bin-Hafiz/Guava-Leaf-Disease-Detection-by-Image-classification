@@ -13,7 +13,6 @@ for feature, label in data:
 
 realSound = list()
 realRing = list()
-
 for i in y:
     if i == 0:
         realRing.append(i)
@@ -25,5 +24,5 @@ labels = [ 'sound', 'ringSpot',]
 #autopact show percentage inside graph
 plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',)
 plt.axis('equal')
-#plt.savefig('./temp/pieChart.jpg') # need to call before calling show
+plt.savefig('percentage of sound and diseased .jpg') # need to call before calling show
 plt.show()

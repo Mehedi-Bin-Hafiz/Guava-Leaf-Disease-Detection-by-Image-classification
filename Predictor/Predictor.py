@@ -63,30 +63,28 @@ realRing = list()
 predSound = list()
 predRing = list()
 
+df = pd.DataFrame({'Real': vy, 'Predicted':y_pred})
+
 for i in vy:
     if i == 0:
         realRing.append(i)
     else:
         realSound.append(i)
-for j in y_pred:
-    if j == 0:
-        predRing.append(j)
-    else:
-        predSound.append(j)
 
+predRing = df.loc[(df['Real']==0) & (df['Predicted'] == 0)]
+predSound = df.loc[(df['Real'] == 1) & (df['Predicted'] == 1)]
 
 Sound=[len(realSound),len(predSound),]
 RingSpot=[len(realRing),len(predRing),]
 predictdata = [Sound,RingSpot]
-print(predictdata)
+
 
 # Creates pandas DataFrame.
 predictdf = pd.DataFrame(predictdata,index=['Sound', ' Ring Spot '],columns=['Real','Prediction'])
 #it create 3 columns
-print(predictdf)
 predictdf.plot.bar(rot=0,) #rot write lebel horizontally
 plt.xlabel('Price range')
-plt.yticks([x for x in range(1,10)])
+plt.yticks([x for x in range(1,21)])
 plt.ylabel('Price type')
 plt.grid()
 # plt.savefig('Real price and predicted price.png') # need to call before calling show
