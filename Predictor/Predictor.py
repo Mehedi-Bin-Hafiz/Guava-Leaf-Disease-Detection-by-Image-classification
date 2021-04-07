@@ -87,7 +87,7 @@ plt.xlabel('Price range')
 plt.yticks([x for x in range(1,21)])
 plt.ylabel('Price type')
 plt.grid()
-# plt.savefig('Real price and predicted price.png') # need to call before calling show
+plt.savefig('Real price and predicted.png') # need to call before calling show
 plt.show()
 
 
