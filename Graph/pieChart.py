@@ -20,7 +20,7 @@ for i in y:
         realSound.append(i)
 sizes = len(realSound), len(realRing),
 explode = (0.013, 0.013,)
-labels = [ 'sound', 'ringSpot',]
+labels = [ 'sound', 'leafSpot',]
 #autopact show percentage inside graph
 plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',)
 plt.axis('equal')
