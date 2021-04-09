@@ -50,9 +50,9 @@ for feature, label in data:
 #datauserate
 print('total testing image',len(vx))
 
-print("\n########## Random Forest Algorithm ###########")
+print("\n########## SVM algorithm ###########")
 X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
-clf=RandomForestClassifier(n_estimators=100)
+clf=svm.SVC(kernel='linear')
 clf.fit(X_train,y_train)
 y_pred=clf.predict(vx)
 print("test size=30, accuracy = {0:.2f}".format(100*metrics.accuracy_score(vy, y_pred)),"%")
@@ -80,7 +80,7 @@ predictdata = [Sound,RingSpot]
 
 
 # Creates pandas DataFrame.
-predictdf = pd.DataFrame(predictdata,index=['Sound', ' Ring Spot '],columns=['Real','Prediction'])
+predictdf = pd.DataFrame(predictdata,index=['Sound', ' Leaf Spot '],columns=['Real','Prediction'])
 #it create 3 columns
 predictdf.plot.bar(rot=0,) #rot write lebel horizontally
 plt.xlabel('Price range')
