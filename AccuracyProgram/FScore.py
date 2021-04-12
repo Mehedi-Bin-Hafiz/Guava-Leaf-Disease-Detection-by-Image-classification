@@ -1,4 +1,3 @@
-
 import pickle
 import random
 from sklearn.neighbors import KNeighborsClassifier
@@ -17,9 +16,6 @@ from sklearn.metrics import confusion_matrix
 
 
 warnings.filterwarnings("ignore")
-
-
-#database
 
 
 pick_in  = open('../Database/pickle/dataset.pickle','rb')
@@ -75,8 +71,6 @@ print('sensitivity is:', round(( tp / (tp+fn) )*100 , 2))
 print('specificity is:', round(( tn / (tn+fn) )*100 , 2))
 
 
-
-
 print("\n########## Decision tree algorithm ###########")
 dtc = DecisionTreeClassifier()
 X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
@@ -109,8 +103,6 @@ print("test size=30, pScore = {0:.2f}".format(100*pscore),"%")
 tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
 print('sensitivity is:', round(( tp / (tp+fn) )*100 , 2))
 print('specificity is:', round(( tn / (tn+fn) )*100 , 2))
-
-
 
 print("\n########## Random Forest Algorithm ###########")
 X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
