@@ -39,7 +39,7 @@ seventypercent=0.70   # training size 30%
 print("########## KNN algorithm ###########")
 
 X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=thirtypercent, random_state=0)
-knn=KNeighborsClassifier(n_neighbors=3,p=2)
+knn=KNeighborsClassifier(n_neighbors=3,p=2) #eucludian distance when p=2
 knn.fit(X_train,y_train)
 score=knn.score(X_test,y_test)
 print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
@@ -77,7 +77,6 @@ print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
 #naive bayes
 print("\n########## Naive Bayes algorithm ###########")
 gnb = GaussianNB()
-
 X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
 gnb.fit(X_train, y_train)
 #Predict the response for test dataset
@@ -120,7 +119,6 @@ print("\n########## Decision tree algorithm ###########")
 dtc = DecisionTreeClassifier()
 X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
 clf = dtc.fit(X_train,y_train)
-
 #Predict the response for test dataset
 pred = clf.predict(X_test)
 score=metrics.accuracy_score(y_test, pred)

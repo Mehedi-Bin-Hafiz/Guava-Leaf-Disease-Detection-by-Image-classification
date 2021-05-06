@@ -9,7 +9,7 @@ import cv2
 
 generator = keras.preprocessing.image.ImageDataGenerator(
 
-    rotation_range=20,
+    rotation_range=30,
     horizontal_flip=True,
     vertical_flip=True,
     shear_range=0.2,
@@ -18,16 +18,16 @@ generator = keras.preprocessing.image.ImageDataGenerator(
 )
 
 Datadir = '../RawData'
-save_here = '../Database/training/leafspot'
+save_here = '../Database/training/Whitefly'
 
 ################## conversion image to number array ##############
 
-Categories = ['leafspot']
+Categories = ['Whitefly']
 img_array = 0
 path = os.path.join(Datadir)
 i = 0
 for batch in generator.flow_from_directory(path, save_to_dir=save_here, save_prefix='dis_agu', save_format='jpg',batch_size=1):
     i += 1
     print(i)
-    if i == 12:
+    if i == 100:
         break

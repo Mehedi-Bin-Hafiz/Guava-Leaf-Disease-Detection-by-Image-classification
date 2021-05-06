@@ -15,9 +15,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn import svm
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
-dir = '../Database/training'
+dir = '../Database/validation'
 
-categories = ['leafspot', 'sound']
+categories = ['Leafspot', 'Rust', 'Sound', 'Whitefly']
 
 data = []
 # plt.imshow(dis_img)
@@ -40,6 +40,6 @@ for category in categories:
         except:
             pass
 
-pick_out = open('../Database/pickle/dataset.pickle','wb')
+pick_out = open('../Database/pickle/Vdataset.pickle','wb')
 pickle.dump(data,pick_out)
 pick_out.close()

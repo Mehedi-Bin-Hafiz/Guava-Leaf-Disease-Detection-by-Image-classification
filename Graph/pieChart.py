@@ -20,9 +20,9 @@ for i in y:
         realSound.append(i)
 sizes = len(realSound), len(realRing),
 explode = (0.013, 0.013,)
-labels = [ 'sound', 'leafSpot',]
+labels = [ 'Sound', 'leafSpot',]
 #autopact show percentage inside graph
 plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',)
 plt.axis('equal')
-plt.savefig('percentage of sound and diseased .jpg') # need to call before calling show
+plt.savefig('percentage of Sound and diseased .jpg') # need to call before calling show
 plt.show()
