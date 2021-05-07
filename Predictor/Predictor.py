@@ -65,48 +65,52 @@ predRing = list()
 
 df = pd.DataFrame({'Real': vy, 'Predicted':y_pred})
 
-for i in vy:
-    if i == 0:
-        realRing.append(i)
-    else:
-        realSound.append(i)
+print(df)
 
-predRing = df.loc[(df['Real']==0) & (df['Predicted'] == 0)]
-predSound = df.loc[(df['Real'] == 1) & (df['Predicted'] == 1)]
+realSpot = df.loc[(df['Real']==0)]
+realRust = df.loc[(df['Real']==1)]
+realSound = df.loc[(df['Real']==2)]
+realaWhitefly = df.loc[(df['Real']==3)]
+
+predSopt = df.loc[(df['Real'] == 0) & (df['Predicted'] == 0)]
+predRust = df.loc[(df['Real'] == 1) & (df['Predicted'] == 1)]
+predSound = df.loc[(df['Real'] == 2) & (df['Predicted'] == 2)]
+predWhitefly = df.loc[(df['Real'] == 3) & (df['Predicted'] == 3)]
 
 Sound=[len(realSound),len(predSound),]
-RingSpot=[len(realRing),len(predRing),]
-predictdata = [Sound,RingSpot]
+LeafSpot=[len(realSpot),len(predSopt),]
+Rust=[len(realRust),len(predRust),]
+Whitefly=[len(realaWhitefly),len(predWhitefly),]
+predictdata = [Sound,LeafSpot,Rust,Whitefly]
 
 
 # Creates pandas DataFrame.
-predictdf = pd.DataFrame(predictdata,index=['Sound', ' Leaf Spot '],columns=['Real','Prediction'])
+predictdf = pd.DataFrame(predictdata,index=['Sound', ' Leaf Spot ', 'Rust', 'Whitefly'],columns=['Real','Prediction'])
 #it create 3 columns
 predictdf.plot.bar(rot=0,) #rot write lebel horizontally
 plt.xlabel('Price range')
-plt.yticks([x for x in range(1,21)])
+plt.yticks([x for x in range(1,18)])
 plt.ylabel('Price type')
 plt.grid()
 plt.savefig('Real price and predicted.png') # need to call before calling show
 plt.show()
 
-
+#
 ############################# Confusion Matrix #########################
 
 
 from sklearn.metrics import confusion_matrix
 import seaborn as sns
 plt.rcParams["font.family"] = "Times New Roman"
-# plt.rcParams["figure.figsize"] = [9,5]
 plt.rcParams.update({'font.size': 12})
-cf_matrix= confusion_matrix(vy,y_pred)
+cf_matrix= confusion_matrix(vy,y_pred,)
 group_names = ['True Neg','False Pos','False Neg','True Pos']
 group_counts = ['{0:0.0f}'.format(value) for value in
                 cf_matrix.flatten()]
 labels = [f"{v1}\n{v2}" for v1, v2 in
           zip(group_names,group_counts)]
 labels = np.asarray(labels).reshape(2,2)
-sns.heatmap(cf_matrix, annot=labels, fmt='',)
+sns.heatmap(cf_matrix, annot=True, fmt='',)
 plt.xlabel('Predicted')
 plt.ylabel('True')
 plt.savefig("Confusion Matrix.png")
