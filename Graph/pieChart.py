@@ -13,16 +13,23 @@ for feature, label in data:
 
 realSound = list()
 realRing = list()
+realRust = list()
+realWhitefly = list()
+realLeafsopt = list()
 for i in y:
     if i == 0:
-        realRing.append(i)
-    else:
+        realLeafsopt.append(i)
+    elif i == 1:
+        realRust.append(i)
+    elif i == 2:
         realSound.append(i)
-sizes = len(realSound), len(realRing),
-explode = (0.013, 0.013,)
-labels = [ 'Sound', 'leafSpot',]
+    else:
+        realWhitefly.append(i)
+sizes = len(realLeafsopt), len(realRust),len(realSound),len(realWhitefly)
+explode = (0.013, 0.013,0.013, 0.013,)
+labels = [ 'Leaf spot','Rust','Sound','White fly']
 #autopact show percentage inside graph
 plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',)
 plt.axis('equal')
-plt.savefig('percentage of Sound and diseased .jpg') # need to call before calling show
+plt.savefig('dataset representation.jpg') # need to call before calling show
 plt.show()
