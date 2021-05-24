@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import cv2
 import pickle
 
-dir = '../Database/validation'
+dir = '../RawData/ValidationPro'
 
 categories = ['Leafspot', 'Rust', 'Sound', 'Whitefly']
 
@@ -29,6 +29,6 @@ for category in categories:
         except:
             pass
 
-pick_out = open('../Database/pickle/Vdataset.pickle','wb')
+pick_out = open('../Database/pickle/VProDataset.pickle','wb')
 pickle.dump(data,pick_out)
 pick_out.close()
