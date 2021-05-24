@@ -37,7 +37,7 @@ seventypercent=0.70   # training size 30%
 
 
 ################# Validation dataset ###################
-pick_in  = open('../Database/pickle/Vdataset.pickle','rb')
+pick_in  = open('../Database/pickle/VProDataset.pickle','rb')
 data = pickle.load(pick_in)
 pick_in.close()
 random.shuffle(data)
@@ -52,13 +52,25 @@ print('total testing image',len(vx))
 
 print("\n########## SVM algorithm ###########")
 X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
-clf=RandomForestClassifier(n_estimators=100, probability=True)
+clf=RandomForestClassifier(n_estimators=100,)
 clf.fit(X_train,y_train)
 y_pred=clf.predict_proba(vx)
-print(y_pred[0][0]*100)
-print(y_pred[0][1]*100)
-print(y_pred[0][2]*100)
-print(y_pred[0][3]*100)
+print(y_pred)
+leafspot = y_pred[0]
+rust = y_pred[1]
+sound = y_pred[2]
+whitefly = y_pred[3]
 
+
+print(leafspot[0]*100)
+print(rust[1]*100)
+print(sound[2]*100)
+print(whitefly[3]*100)
+
+# last updated
+# leafspot = 85.0 %
+# rust = 97%
+# sound = 100 %
+# whitefly = 91.0 %
 
 
